@@ -47,6 +47,16 @@ public function getOldproduct(){
     $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
     return $items;//return an array
 }
+public function getOldProductByManuId($manu_id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id` = `manufactures`.`manu_id` && `manufactures`.`manu_id`=? ORDER BY id ASC LIMIT 5");
+        $sql->bind_param("i", $manu_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+
 public function getNewProductByManuId($manu_id)
     {
         $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id` = `manufactures`.`manu_id` && `manufactures`.`manu_id`=?");
