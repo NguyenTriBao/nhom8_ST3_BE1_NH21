@@ -91,4 +91,16 @@ public function paginate($url, $total, $perPage)
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function addProduct($name,$manu_id,$type_id,$price,$image,$desc){
+        $sql = self::$connection->prepare("
+        INSERT INTO `products`(`name`, `manu_id`, `type_id`, `price`, `image`, `description`) 
+        VALUES (?,?,?,?,?,?)");
+        $sql->bind_param("siiiss", $name,$manu_id,$type_id,$price,$image,$desc);
+        return $sql->execute();
+    }
+    public function delProduct($id){
+        $sql = self::$connection->prepare("DELETE From `products` Where `id`=?");
+        $sql->bind_param("i",$id);
+        return $sql->execute();
+    }
 }

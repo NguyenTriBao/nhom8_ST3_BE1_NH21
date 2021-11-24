@@ -1,8 +1,20 @@
+
 <?php
+ if (isset($_SESSION['user'])){
+    if ($_SESSION['user'] == "") {
+        header('location:login.php'); 
+    }
+    else{
+        echo $_SESSION['user'];
+    }
+}
+session_start();
 require "config.php";
 require "models/db.php";
 require "models/product.php";
+require "models/manufacture.php";
 $product = new product;
+$manu = new manufacture;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,7 +210,18 @@ $product = new product;
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">
+                            <?php 
+                            if (isset($_SESSION['user'])) {
+                                if ($_SESSION['user'] == "") {
+                                    header('location:login.php');
+                                }
+                                else{
+                                    echo $_SESSION['user'];
+                                }
+                            }
+                            ?>
+                        </a>
                     </div>
                 </div>
 
@@ -237,13 +260,18 @@ $product = new product;
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/examples/project-add.html" class="nav-link">
+                                    <a href="addproduct.php" class="nav-link">
                                         <p>Project Add</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/examples/project-edit.html" class="nav-link">
+                                    <a href="#" class="nav-link">
                                         <p>Project Edit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="logout.php" class="nav-link">
+                                        <p>Thoát</p>
                                     </a>
                                 </li>
                             </ul>
@@ -254,3 +282,4 @@ $product = new product;
             </div>
             <!-- /.sidebar -->
         </aside>
+  

@@ -1,4 +1,6 @@
-
+<?php 
+session_start();
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -45,6 +47,7 @@
     if(isset($_POST['submit'])){
        $username= $_POST['username'];
        $password= $_POST['password'];
+	   $_SESSION['user'] = $_POST['username'];
         $user = new ktra($_POST['username'], $_POST['password']);
         if ($user->ktra($_POST['username'],$_POST['password']) == true) {
             header('location:index.php'); 
