@@ -1,20 +1,14 @@
 
 <?php
- if (isset($_SESSION['user'])){
-    if ($_SESSION['user'] == "") {
-        header('location:login.php'); 
-    }
-    else{
-        echo $_SESSION['user'];
-    }
-}
-session_start();
+
 require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
+require "models/protype.php";
 $product = new product;
 $manu = new manufacture;
+$type = new protype;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -262,6 +256,26 @@ $manu = new manufacture;
                                 <li class="nav-item">
                                     <a href="addproduct.php" class="nav-link">
                                         <p>Project Add</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="manufactures.php" class="nav-link">
+                                        <p>Manufacture</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addmanu.php" class="nav-link">
+                                        <p>Manufacture add</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="protypes.php" class="nav-link">
+                                        <p>Protype</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addprotype.php" class="nav-link">
+                                        <p>Protype add</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

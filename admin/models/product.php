@@ -15,60 +15,6 @@ $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 return $items;//return an array
 }
 
-public function getProductById($id)
-{
-$sql = self::$connection->prepare("SELECT * FROM products WHERE id = ?");
-$sql->bind_param("i",$id);
-$sql->execute(); //return an object
-$items = array();
-$items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-return $items;//return an array
-}
-
-
-public function getNewproduct(){
-    $sql = self::$connection->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 10");
-    $sql->execute(); //return an object
-    $items = array();
-    $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $items;//return an array
-}
-
-public function search($keyword){
-    $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
-    $keyword = "%$keyword%";
-    $sql->bind_param("s", $keyword);
-    $sql->execute(); //return an object
-    $items = array();
-    $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $items;//return an array
-}
-
-public function getOldproduct(){
-    $sql = self::$connection->prepare("SELECT * FROM products ORDER BY id ASC LIMIT 10");
-    $sql->execute(); //return an object
-    $items = array();
-    $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $items;//return an array
-}
-public function getNewProductByManuId($manu_id)
-    {
-        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id` = `manufactures`.`manu_id` && `manufactures`.`manu_id`=?");
-        $sql->bind_param("i", $manu_id);
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
-    }
-public function getProductByManuId($manu_id)
-    {
-        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id` = `manufactures`.`manu_id` && `manufactures`.`manu_id`=?");
-        $sql->bind_param("i", $manu_id);
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
-    }
 public function paginate($url, $total, $perPage)
 {
     $totalLinks = ceil($total/$perPage);
@@ -79,18 +25,6 @@ public function paginate($url, $total, $perPage)
      	}
      	return $link;
 }
-    public function get3ProductByManuId($manu_id, $page, $perPage)
-    {
-        // Tính số thứ tự trang bắt đầu
-        $firstLink = ($page - 1) * $perPage;
-        $sql = self::$connection->prepare("SELECT * FROM products
-        WHERE manu_id = ? LIMIT ?, ?");
-        $sql->bind_param("iii", $manu_id, $firstLink, $perPage);
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
-    }
     public function addProduct($name,$manu_id,$type_id,$price,$image,$desc){
         $sql = self::$connection->prepare("
         INSERT INTO `products`(`name`, `manu_id`, `type_id`, `price`, `image`, `description`) 

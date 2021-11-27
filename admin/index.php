@@ -1,4 +1,12 @@
-<?php include "header.php"?>
+<?php
+session_start();
+ if (isset($_SESSION['user'])){
+    if ($_SESSION['user'] == "") {
+        header('location:login.php'); 
+    }
+    else{
+        echo $_SESSION['user'];
+include "header.php"?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -604,5 +612,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php include "footer.php"?>
+  <?php include "footer.php";
+    }
+}
+?>
  

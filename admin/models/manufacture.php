@@ -1,5 +1,12 @@
 <?php
 class Manufacture extends Db{
+    public function addManu($name){
+        $sql = self::$connection->prepare("
+        INSERT INTO `manufactures`(`manu_name`) 
+        VALUES (?)");
+        $sql->bind_param("s", $name);
+        return $sql->execute();
+    }
     public function getAllManu(){
         $sql = self::$connection->prepare("SELECT * FROM manufactures");
         $sql->execute(); //return an object
@@ -14,4 +21,5 @@ class Manufacture extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    
 }
