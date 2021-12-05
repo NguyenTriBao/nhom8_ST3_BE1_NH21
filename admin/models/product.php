@@ -37,4 +37,19 @@ public function paginate($url, $total, $perPage)
         $sql->bind_param("i",$id);
         return $sql->execute();
     }
+    public function getProductById($id)
+{
+$sql = self::$connection->prepare("SELECT * FROM products WHERE id = ?");
+$sql->bind_param("i",$id);
+$sql->execute(); //return an object
+$items = array();
+$items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+return $items;//return an array
+}
+public function editProduct($id,$name,$manu_id,$type_id,$price,$image,$desc){
+    $sql = self::$connection->prepare("UPDATE products SET `name`=?,`manu_id`=?,`type_id`=?,`price`=?,`image`=?,`description`=? WHERE `id`=?");
+    $sql->bind_param("siiissi",$name,$manu_id,$type_id,$price,$image,$desc,$id);
+    var_dump("UPDATE products SET `name`=?,`manu_id`='$name',`type_id`=$type_id,`price`=$price,`image`='$image',`description`='$desc' WHERE `id`=$id");
+    return $sql->execute();
+}
 }

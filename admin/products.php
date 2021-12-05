@@ -90,7 +90,7 @@
                           <?php echo $value['type_name'] ?>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" href="editproducts.php?id=<?php echo $value['id'] ?>">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit

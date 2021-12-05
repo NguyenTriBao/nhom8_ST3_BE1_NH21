@@ -14,4 +14,9 @@ class Protype extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function delProtype($type_id){
+        $sql = self::$connection->prepare("DELETE FROM `protypes` WHERE `type_id`=?");
+        $sql->bind_param("i",$type_id);
+        return $sql->execute();
+    }
 }
