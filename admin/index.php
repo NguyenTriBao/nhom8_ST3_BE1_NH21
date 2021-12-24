@@ -1,11 +1,4 @@
 <?php
-session_start();
- if (isset($_SESSION['user'])){
-    if ($_SESSION['user'] == "") {
-        header('location:login.php'); 
-    }
-    else{
-        echo $_SESSION['user'];
 include "header.php"?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -244,7 +237,7 @@ include "header.php"?>
 
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
-                            Sarah Doe
+                           
                             <small class="contacts-list-date float-right">2/23/2015</small>
                           </span>
                           <span class="contacts-list-msg">I will be waiting for...</span>
@@ -613,7 +606,5 @@ include "header.php"?>
   </div>
   <!-- /.content-wrapper -->
   <?php include "footer.php";
-    }
-}
 ?>
  

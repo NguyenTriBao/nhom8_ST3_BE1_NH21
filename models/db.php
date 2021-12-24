@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Db
 {
 	public static $connection;

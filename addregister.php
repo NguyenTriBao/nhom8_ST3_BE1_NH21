@@ -18,15 +18,15 @@ session_start();
 <div class="center-container">
 	<!--header-->
 	<div class="header-w3l">
-		<h1>Online Login</h1>
+		<h1>Online Register</h1>
 	</div>
 	<!--//header-->
 	<div class="main-content-agile">
 		<div class="sub-main-w3">	
 			<div class="wthree-pro">
-				<h2>Login Quick</h2>
+				<h2>Register</h2>
 			</div>
-			<form action="login1.php" method="post">
+			<form action="add.php" method="post">
 				<div class="pom-agile">
 					<input placeholder="E-mail" name="username" class="user" type="email" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -35,8 +35,11 @@ session_start();
 					<input  placeholder="Password" name="password" class="pass" type="password" required="">
 					<span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
 				</div>
+                <div class="pom-agile">
+					<input  placeholder="Password Confirm" name="ktra" class="pass" type="password" required="">
+					<span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+				</div>
 				<div class="sub-w3l">
-					<h6><a href="#">Forgot Password?</a></h6>
 					<div class="right-w3l">
 						<input type="submit" name="submit" value="submit">
 					</div>

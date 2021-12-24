@@ -1,14 +1,15 @@
 
 <?php
-
 require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
 require "models/protype.php";
+require "models/customer.php";
 $product = new product;
 $manu = new manufacture;
 $type = new protype;
+$customer = new customer;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -207,10 +208,7 @@ $type = new protype;
                         <a href="#" class="d-block">
                             <?php 
                             if (isset($_SESSION['user'])) {
-                                if ($_SESSION['user'] == "") {
-                                    header('location:login.php');
-                                }
-                                else{
+                                if ($_SESSION['user'] != "") {
                                     echo $_SESSION['user'];
                                 }
                             }
@@ -279,8 +277,8 @@ $type = new protype;
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <p>Project Edit</p>
+                                    <a href="customer.php" class="nav-link">
+                                        <p>Customer</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

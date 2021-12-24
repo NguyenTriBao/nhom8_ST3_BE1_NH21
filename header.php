@@ -60,8 +60,18 @@ $getnewManu = $manu->getNewmanu();
                     <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                    <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <li><a href="addregister.php"><i class="fa fa-dollar"></i> Register</a></li>
+                    <li><a href="login.php"><i class="fa fa-user-o"></i> <?php 
+                            if (isset($_SESSION['user'])) {
+                                if ($_SESSION['user'] != "") {
+                                    echo $_SESSION['user'];
+                                }
+                            }
+                            else{
+                                echo "My account";
+                            }
+                            ?></a></li>
+                    <li><a href="logout.php"><i class="fa fa-dollar"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -117,7 +127,7 @@ $getnewManu = $manu->getNewmanu();
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Your Cart</span>
-                                    <div class="qty">3</div>
+                                    <div class="qty"></div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
@@ -128,17 +138,6 @@ $getnewManu = $manu->getNewmanu();
                                             <div class="product-body">
                                                 <h3 class="product-name"><a href="#">product name goes here</a></h3>
                                                 <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="./img/product02.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
                                             </div>
                                             <button class="delete"><i class="fa fa-close"></i></button>
                                         </div>
@@ -183,10 +182,12 @@ $getnewManu = $manu->getNewmanu();
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="index.php">Home</a></li>
                     <?php foreach ($getallManu as $value):
                     ?>
-                    <li><a href="products.php?manu_id=<?php echo $value['manu_id']?>"><?php echo $value['manu_name'] ?></a></li>
+                    <li><a
+                            href="products.php?manu_id=<?php echo $value['manu_id']?>"><?php echo $value['manu_name'] ?></a>
+                    </li>
                     <?php endforeach;?>
                 </ul>
                 <!-- /NAV -->

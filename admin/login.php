@@ -27,7 +27,7 @@ session_start();
 			<div class="wthree-pro">
 				<h2>Login Quick</h2>
 			</div>
-			<form action="" method="post">
+			<form action="../logindi/login2.php" method="post">
 				<div class="pom-agile">
 					<input placeholder="E-mail" name="username" class="user" type="email" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -43,20 +43,7 @@ session_start();
 					</div>
 				</div>
 			</form>
-            <?php
-    if(isset($_POST['submit'])){
-       $username= $_POST['username'];
-       $password= $_POST['password'];
-	   $_SESSION['user'] = $_POST['username'];
-        $user = new ktra($_POST['username'], $_POST['password']);
-        if ($user->ktra($_POST['username'],$_POST['password']) == true) {
-            header('location:index.php'); 
-        }
-        else {
-            echo "Sai tài khoản hoặc mật khẩu";
-        }
-    }
-    ?>
+
 		</div>
 	</div>
 	<!--//main-->

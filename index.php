@@ -79,6 +79,7 @@
             <!-- /section title -->
 
             <!-- Products tab & slick -->
+            <form action="dohang.php" method="post">
             <div class="col-md-12">
                 <div class="row">
                     <div class="products-tabs">
@@ -97,7 +98,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a href="dohang.php?id=<?php echo $value['id'] ?>"><?php echo $value['name'] ?></a></h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?>VND</h4>
                                         <div class="product-btns">
                                             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
@@ -109,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <a href="cart.php?id=<?php echo $value['id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                                 <!-- /product -->
@@ -125,7 +126,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a href="dohang.php?id=<?php echo $value['id'] ?>"><?php echo $value['name'] ?></a></h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?>VND</h4>
                                         <div class="product-btns">
                                             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
@@ -137,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <a href="cart.php?id=<?php echo $value['id'] ?>" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                                 <!-- /product -->
@@ -152,6 +153,7 @@
                 </div>
             </div>
             <!-- Products tab & slick -->
+            </form>
         </div>
         <!-- /row -->
     </div>
@@ -273,7 +275,7 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <a href="cart.php?id=<?php echo $value['id'] ?>" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                                 <?php endforeach;
